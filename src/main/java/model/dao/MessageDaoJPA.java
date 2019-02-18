@@ -5,7 +5,10 @@ import model.logic.Message;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
+
+import static javax.transaction.Transactional.TxType.REQUIRED;
 
 @Stateless @JPA
 public class MessageDaoJPA extends DaoFacade<Message> implements MessageDao{
@@ -27,7 +30,7 @@ public class MessageDaoJPA extends DaoFacade<Message> implements MessageDao{
 		return  em.createQuery("SELECT m FROM Message m").getResultList();
 	}
 
-	@Override
+	@Override  @Transactional(REQUIRED)
 	public void addMessage(Message message) { em.persist(message);}
 
 	@Override

@@ -2,12 +2,14 @@ package model.logic;
 
 import model.service.MessageService;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.List;
-
+@Stateless @LocalBean @EJB(beanInterface = MessageProvider.class, name = "MessageProvider")
 public class MessageProvider {
-	@Inject
+	@EJB
 	MessageService messageService;
 
 	public List<Message> getMessages()
@@ -17,6 +19,8 @@ public class MessageProvider {
 		List<Message> messages = new ArrayList<>();
 		messages.add(new Message("test1"));
 		messages.add(new Message("test2"));
+
+
 
 		return messages;
 	}

@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class Message implements Serializable {
 	@Id @GeneratedValue
 	private long id;
+	@Column
 	private String message;
 	private Date date;
 

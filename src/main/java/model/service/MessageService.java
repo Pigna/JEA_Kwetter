@@ -4,14 +4,15 @@ import model.dao.JPA;
 import model.dao.MessageDao;
 import model.logic.Message;
 
+import javax.ejb.EJB;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import java.util.List;
 
-@Stateless
+@Stateless @LocalBean @EJB(beanInterface = MessageService.class, name = "MessageService")
 public class MessageService {
 
-	@Inject @JPA
+	@EJB @JPA
 	private MessageDao messageDao;
 
 	public MessageService() {
