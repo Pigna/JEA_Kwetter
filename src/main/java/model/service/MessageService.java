@@ -5,18 +5,14 @@ import model.dao.MessageDao;
 import model.logic.Message;
 
 import javax.ejb.EJB;
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import java.util.List;
 
-@Stateless @LocalBean @EJB(beanInterface = MessageService.class, name = "MessageService")
+@Stateless
 public class MessageService {
 
 	@EJB @JPA
 	private MessageDao messageDao;
-
-	public MessageService() {
-	}
 
 	public List<Message> getMessages() {
 		return messageDao.getMessages();

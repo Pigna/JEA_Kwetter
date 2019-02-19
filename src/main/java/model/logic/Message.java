@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "messages")
+@Table(name = "Message")
 public class Message implements Serializable {
 	@Id @GeneratedValue
 	private long id;
